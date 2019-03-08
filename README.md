@@ -14,4 +14,4 @@ This fork is to enable quering QA on a trained model. A trained model over the [
 For more explanation about training a model go to the [original repository](https://github.com/danqi/rc-cnn-dailymail).
 
 ## Creating a QA stream
-When running `python code/run_qa_model.py --folder folder_path` you start a QA stream that expects questions in `folder_path/queries.pkl` and returns its answers in `folder_path/answers.txt`
+When running `python code/run_qa_model.py --folder folder_path` you start a QA stream that expects questions in `folder_path/queries.pkl` and returns its rewarding accuracy in `folder_path/rewards.txt`
