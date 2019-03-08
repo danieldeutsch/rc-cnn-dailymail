@@ -14,6 +14,11 @@ def get_args():
     parser = argparse.ArgumentParser()
     parser.register('type', 'bool', str2bool)
 
+    parser.add_argument('--prepare_model',
+                        type='bool',
+                        default=False,
+                        help='prepare_model: returns the model')
+
     # Basics
     parser.add_argument('--debug',
                         type='bool',
