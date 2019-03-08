@@ -97,7 +97,7 @@ def vectorize(examples, word_dict, entity_dict,
     for idx, (d, q, a) in enumerate(zip(examples[0], examples[1], examples[2])):
         d_words = d.split(' ')
         q_words = q.split(' ')
-        assert (a in d_words)
+        # assert (a in d_words)
         seq1 = [word_dict[w] if w in word_dict else 0 for w in d_words]
         seq2 = [word_dict[w] if w in word_dict else 0 for w in q_words]
         if (len(seq1) > 0) and (len(seq2) > 0):

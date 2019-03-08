@@ -1,8 +1,7 @@
-
 import numpy as np
+import lasagne
 import theano
 import theano.tensor as T
-import lasagne
 
 import sys
 import time
@@ -169,13 +168,14 @@ def main(args):
 
     logging.info('-' * 50)
     # Load embedding file
+    print(args)
     embeddings = utils.gen_embeddings(word_dict, args.embedding_size, args.embedding_file)
     (args.vocab_size, args.embedding_size) = embeddings.shape
     logging.info('Compile functions..')
     train_fn, test_fn, params = build_fn(args, embeddings)
     logging.info('Done.')
     if args.prepare_model:
-        return train_fn, test_fn, params
+        return args, word_dict, entity_dict, train_fn, test_fn, params
 
     logging.info('-' * 50)
     logging.info(args)
@@ -230,8 +230,37 @@ def main(args):
                     utils.save_params(args.model_file, params, epoch=epoch, n_updates=n_updates)
 
 
-if __name__ == '__main__':
-    args = config.get_args()
+from collections import namedtuple
+def qa_model(debug=False, test_only=False, prepare_model=False, random_seed=1013, train_file=None, dev_file=None, pre_trained=None, model_file='model.pkl.gz', log_file=None, embedding_file=None, max_dev=None, relabeling=True, embedding_size=None, hidden_size=128, bidir=True, num_layers=1, rnn_type='gru', att_func='bilinear', batch_size=32, num_epoches=100, eval_iter=100, dropout_rate=0.2, optimizer='sgd', learning_rate=0.1, grad_clipping=10.0):
+
+    args = namedtuple("args", "debug, test_only, prepare_model, random_seed, train_file, dev_file, pre_trained, model_file, log_file, embedding_file, max_dev, relabeling, embedding_size, hidden_size, bidir, num_layers, rnn_type, att_func, batch_size, num_epoches, eval_iter, dropout_rate, optimizer, learning_rate, grad_clipping")
+    args.debug = debug
+    args.test_only = test_only
+    args.prepare_model = prepare_model
+    args.random_seed = random_seed
+    args.train_file = train_file
+    args.dev_file = dev_file
+    args.pre_trained = pre_trained
+    args.model_file = model_file
+    args.log_file = log_file
+    args.embedding_file = embedding_file
+    args.max_dev = max_dev
+    args.relabeling = relabeling
+    args.embedding_size = embedding_size
+    args.hidden_size = hidden_size
+    args.bidir = bidir
+    args.num_layers = num_layers
+    args.rnn_type = rnn_type
+    args.att_func = att_func
+    args.batch_size = batch_size
+    args.num_epoches = num_epoches
+    args.eval_iter = eval_iter
+    args.dropout_rate = dropout_rate
+    args.optimizer = optimizer
+    args.learning_rate = learning_rate
+    args.grad_clipping = grad_clipping
+    
+    # args = config.get_args()
     np.random.seed(args.random_seed)
     lasagne.random.set_rng(np.random.RandomState(args.random_seed))
 
@@ -266,4 +295,12 @@ if __name__ == '__main__':
                             format='%(asctime)s %(message)s', datefmt='%m-%d %H:%M')
 
     logging.info(' '.join(sys.argv))
-    main(args)
+    return main(args)
+
+def test(args, word_dict, entity_dict, train_fn, test_fn, params):
+    dev_examples = utils.load_data(args.dev_file, args.max_dev, relabeling=args.relabeling)
+    dev_x1, dev_x2, dev_l, dev_y = utils.vectorize(dev_examples, word_dict, entity_dict)
+    assert len(dev_x1) == args.num_dev
+    all_dev = gen_examples(dev_x1, dev_x2, dev_l, dev_y, args.batch_size)
+    dev_acc = eval_acc(test_fn, all_dev)
+    return dev_acc
