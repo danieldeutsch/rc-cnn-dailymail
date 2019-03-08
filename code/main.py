@@ -174,6 +174,8 @@ def main(args):
     logging.info('Compile functions..')
     train_fn, test_fn, params = build_fn(args, embeddings)
     logging.info('Done.')
+    if args.prepare_model:
+        return train_fn, test_fn, params
 
     logging.info('-' * 50)
     logging.info(args)
@@ -226,7 +228,6 @@ def main(args):
                     logging.info('Best dev accuracy: epoch = %d, n_udpates = %d, acc = %.2f %%'
                                  % (epoch, n_updates, dev_acc))
                     utils.save_params(args.model_file, params, epoch=epoch, n_updates=n_updates)
-
 
 if __name__ == '__main__':
     args = config.get_args()

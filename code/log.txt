@@ -1,0 +1,87 @@
+Using cuDNN version 5105 on context None
+Mapped name None to device cuda3: GeForce GTX 1080 (0000:83:00.0)
+01-08 07:11 run_qa_model.py
+01-08 07:11 --------------------------------------------------
+01-08 07:11 Load data files..
+01-08 07:11 ********** Train
+01-08 07:13 #Examples: 380298
+01-08 07:13 ********** Dev
+01-08 07:13 #Examples: 3198
+01-08 07:13 --------------------------------------------------
+01-08 07:13 Build dictionary..
+01-08 07:15 #Words: 118440 -> 50000
+01-08 07:15 ('the', 15383021)
+01-08 07:15 (',', 13757778)
+01-08 07:15 ('.', 11782121)
+01-08 07:15 ('to', 7208903)
+01-08 07:15 ('"', 6967510)
+01-08 07:15 ...
+01-08 07:15 ('gourd', 21)
+01-08 07:15 ('3,842', 21)
+01-08 07:15 ('subdomain', 21)
+01-08 07:15 ('2010s', 21)
+01-08 07:15 ('mopey', 21)
+01-08 07:15 Entity markers: 328
+01-08 07:15 --------------------------------------------------
+01-08 07:15 Embeddings: 50002 x 100
+01-08 07:15 Loading embedding file: /matan_files/word-embeddings/glove.6B.100d.txt
+01-08 07:15 Pre-trained: 48609 (97.21%)
+01-08 07:15 Compile functions..
+01-08 07:15 Loaded pre-trained model: /matan_files/rc-cnn-dailymail/code/model.pkl.gz
+01-08 07:15 ('epoch', 46)
+01-08 07:15 ('n_updates', 551600)
+01-08 07:15 #params: 5501776
+01-08 07:15 <lasagne.layers.input.InputLayer object at 0x7fd8462b9ed0>
+01-08 07:15 <lasagne.layers.embedding.EmbeddingLayer object at 0x7fd8462b9710>
+01-08 07:15 <lasagne.layers.noise.DropoutLayer object at 0x7fd868c5b910>
+01-08 07:15 <lasagne.layers.input.InputLayer object at 0x7fd8462b90d0>
+01-08 07:15 <lasagne.layers.recurrent.GRULayer object at 0x7fd868c5bfd0>
+01-08 07:15 <lasagne.layers.noise.DropoutLayer object at 0x7fd89b387510>
+01-08 07:15 <lasagne.layers.recurrent.GRULayer object at 0x7fd845de2110>
+01-08 07:15 <lasagne.layers.merge.ConcatLayer object at 0x7fd868c5be10>
+01-08 07:15 <lasagne.layers.input.InputLayer object at 0x7fd7daf5f0d0>
+01-08 07:15 <lasagne.layers.embedding.EmbeddingLayer object at 0x7fd868c5bf50>
+01-08 07:15 <lasagne.layers.noise.DropoutLayer object at 0x7fd845a23150>
+01-08 07:15 <lasagne.layers.input.InputLayer object at 0x7fd868c5be50>
+01-08 07:15 <lasagne.layers.recurrent.GRULayer object at 0x7fd845a231d0>
+01-08 07:15 <lasagne.layers.noise.DropoutLayer object at 0x7fd8458bd190>
+01-08 07:15 <lasagne.layers.recurrent.GRULayer object at 0x7fd8458bd590>
+01-08 07:15 <lasagne.layers.merge.ConcatLayer object at 0x7fd845de2f90>
+01-08 07:15 <nn_layers.BilinearAttentionLayer object at 0x7fd845afe450>
+01-08 07:15 <lasagne.layers.dense.DenseLayer object at 0x7fd845afe5d0>
+01-08 07:16 Done.
+01-08 07:16 Vectorization: processed 0 / 9
+01-08 07:43 Vectorization: processed 0 / 5
+01-08 07:45 Vectorization: processed 0 / 5
+01-08 07:45 Vectorization: processed 0 / 1
+01-08 07:45 Vectorization: processed 0 / 1
+01-08 07:45 Vectorization: processed 0 / 3
+01-08 07:45 Vectorization: processed 0 / 2
+01-08 07:45 Vectorization: processed 0 / 2
+01-08 07:45 Vectorization: processed 0 / 2
+01-08 07:45 Vectorization: processed 0 / 5
+01-08 07:46 Vectorization: processed 0 / 3
+01-08 07:46 Vectorization: processed 0 / 1
+01-08 07:46 Vectorization: processed 0 / 7
+01-08 07:46 Vectorization: processed 0 / 2
+01-08 07:46 Vectorization: processed 0 / 6
+01-08 07:46 Vectorization: processed 0 / 3
+01-08 07:46 Vectorization: processed 0 / 2
+01-08 07:46 Vectorization: processed 0 / 9
+running python2 qa_model. don't forget to THEANO_FLAGS=device='cuda1' first
+<class 'qa_model.args'>
+*****************************Started answering to questions****************************
+Traceback (most recent call last):
+  File "run_qa_model.py", line 34, in <module>
+    sleep(1)
+KeyboardInterrupt
+Error in atexit._run_exitfuncs:
+Traceback (most recent call last):
+  File "/root/anaconda3/envs/python2/lib/python2.7/atexit.py", line 24, in _run_exitfuncs
+    func(*targs, **kargs)
+KeyboardInterrupt
+Error in sys.exitfunc:
+Traceback (most recent call last):
+  File "/root/anaconda3/envs/python2/lib/python2.7/atexit.py", line 24, in _run_exitfuncs
+    func(*targs, **kargs)
+KeyboardInterrupt

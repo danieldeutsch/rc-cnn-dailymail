@@ -1,0 +1,64 @@
+08-08 06:30 main.py --train_file /matan_files/datasets/cnn/cnn_qa/train.txt --dev_file /matan_files/datasets/cnn/cnn_qa/test.txt --embedding_file /matan_files/word-embeddings/glove.6B.100d.txt --test_only True --pre_trained /matan_files/rc-cnn-dailymail/code/model.pkl.gz --log_file log_test
+08-08 06:30 --------------------------------------------------
+08-08 06:30 Load data files..
+08-08 06:30 ********** Train
+08-08 06:31 main.py --train_file /matan_files/datasets/cnn/cnn_qa/train.txt --dev_file /matan_files/datasets/cnn/cnn_qa/test.txt --embedding_file /matan_files/word-embeddings/glove.6B.100d.txt --test_only True --pre_trained /matan_files/rc-cnn-dailymail/code/model.pkl.gz --log_file log_test
+08-08 06:31 --------------------------------------------------
+08-08 06:31 Load data files..
+08-08 06:31 ********** Train
+08-08 06:33 #Examples: 380298
+08-08 06:33 ********** Dev
+08-08 06:33 #Examples: 3198
+08-08 06:33 --------------------------------------------------
+08-08 06:33 Build dictionary..
+08-08 06:36 #Words: 118440 -> 50000
+08-08 06:36 ('the', 15383021)
+08-08 06:36 (',', 13757778)
+08-08 06:36 ('.', 11782121)
+08-08 06:36 ('to', 7208903)
+08-08 06:36 ('"', 6967510)
+08-08 06:36 ...
+08-08 06:36 ('gourd', 21)
+08-08 06:36 ('3,842', 21)
+08-08 06:36 ('subdomain', 21)
+08-08 06:36 ('2010s', 21)
+08-08 06:36 ('mopey', 21)
+08-08 06:36 Entity markers: 328
+08-08 06:36 --------------------------------------------------
+08-08 06:36 Embeddings: 50002 x 100
+08-08 06:36 Loading embedding file: /matan_files/word-embeddings/glove.6B.100d.txt
+08-08 06:36 Pre-trained: 48609 (97.21%)
+08-08 06:36 Compile functions..
+08-08 06:36 Loaded pre-trained model: /matan_files/rc-cnn-dailymail/code/model.pkl.gz
+08-08 06:36 ('epoch', 46)
+08-08 06:36 ('n_updates', 551600)
+08-08 06:36 #params: 5501776
+08-08 06:36 <lasagne.layers.input.InputLayer object at 0x7f6d196af910>
+08-08 06:36 <lasagne.layers.embedding.EmbeddingLayer object at 0x7f6d196af890>
+08-08 06:36 <lasagne.layers.noise.DropoutLayer object at 0x7f6d2c9c21d0>
+08-08 06:36 <lasagne.layers.input.InputLayer object at 0x7f6d196afc90>
+08-08 06:36 <lasagne.layers.recurrent.GRULayer object at 0x7f6d27ad7a50>
+08-08 06:36 <lasagne.layers.noise.DropoutLayer object at 0x7f6d27a03150>
+08-08 06:36 <lasagne.layers.recurrent.GRULayer object at 0x7f6d27a06190>
+08-08 06:36 <lasagne.layers.merge.ConcatLayer object at 0x7f6d27b23b10>
+08-08 06:36 <lasagne.layers.input.InputLayer object at 0x7f6d386f9110>
+08-08 06:36 <lasagne.layers.embedding.EmbeddingLayer object at 0x7f6d27b246d0>
+08-08 06:36 <lasagne.layers.noise.DropoutLayer object at 0x7f6d279c5d50>
+08-08 06:36 <lasagne.layers.input.InputLayer object at 0x7f6d27b24710>
+08-08 06:36 <lasagne.layers.recurrent.GRULayer object at 0x7f6d279c5dd0>
+08-08 06:36 <lasagne.layers.noise.DropoutLayer object at 0x7f6d27987e10>
+08-08 06:36 <lasagne.layers.recurrent.GRULayer object at 0x7f6d279ae310>
+08-08 06:36 <lasagne.layers.merge.ConcatLayer object at 0x7f6d27a29250>
+08-08 06:36 <nn_layers.BilinearAttentionLayer object at 0x7f6d27956550>
+08-08 06:36 <lasagne.layers.dense.DenseLayer object at 0x7f6d27956910>
+08-08 06:37 Done.
+08-08 06:37 --------------------------------------------------
+08-08 06:37 Namespace(att_func='bilinear', batch_size=32, bidir=True, debug=False, dev_file='/matan_files/datasets/cnn/cnn_qa/test.txt', dropout_rate=0.2, embedding_file='/matan_files/word-embeddings/glove.6B.100d.txt', embedding_size=100, eval_iter=100, grad_clipping=10.0, hidden_size=128, learning_rate=0.1, log_file='log_test', max_dev=None, model_file='model.pkl.gz', num_dev=3198, num_epoches=100, num_labels=328, num_layers=1, num_train=380298, optimizer='sgd', pre_trained='/matan_files/rc-cnn-dailymail/code/model.pkl.gz', random_seed=1013, relabeling=True, rnn_layer=<class 'lasagne.layers.recurrent.GRULayer'>, rnn_output_size=256, rnn_type='gru', test_only=True, train_file='/matan_files/datasets/cnn/cnn_qa/train.txt', vocab_size=50002)
+08-08 06:37 --------------------------------------------------
+08-08 06:37 Intial test..
+08-08 06:37 Vectorization: processed 0 / 3198
+08-08 06:37 Dev accuracy: 74.45 %
+08-08 06:39 main.py --train_file /matan_files/datasets/cnn/cnn_qa/train.txt --dev_file /matan_files/datasets/cnn/cnn_qa/test.txt --embedding_file /matan_files/word-embeddings/glove.6B.100d.txt --test_only True --pre_trained /matan_files/rc-cnn-dailymail/code/model.pkl.gz --log_file log_test2
+08-08 06:39 --------------------------------------------------
+08-08 06:39 Load data files..
+08-08 06:39 ********** Train
