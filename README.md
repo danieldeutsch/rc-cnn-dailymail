@@ -1,9 +1,9 @@
 # CNN/Daily Mail Reading Comprehension Task
 
 This is a fork of https://github.com/danqi/rc-cnn-dailymail. code for [A Thorough Examination of the CNN/Daily Mail Reading Comprehension Task](https://arxiv.org/pdf/1606.02858v2.pdf).
-For exaplnation go to the [original repository](https://github.com/danqi/rc-cnn-dailymail)
+For exaplnation go to the [original repository](https://github.com/danqi/rc-cnn-dailymail).
 
-This fork is to enable quering QA on a trained model. A trained model over the [CNN dataset](http://cs.stanford.edu/~danqi/data/cnn.tar.gz) is available [here](https://github.com/mataney/rc-cnn-dailymail/blob/master/code/model.pkl.gz)
+This fork is to enable quering QA on a trained model. A trained model over the [CNN dataset](http://cs.stanford.edu/~danqi/data/cnn.tar.gz) is available [here](https://github.com/mataney/rc-cnn-dailymail/blob/master/code/model.pkl.gz).
 
 ## Dependencies
 * Python 2.7

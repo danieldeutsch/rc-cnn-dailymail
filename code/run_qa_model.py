@@ -9,35 +9,31 @@ import argparse
 
 
 parser = argparse.ArgumentParser(description='Process some integers.')
-parser.add_argument('--run_id', type=int,
-                    help='run id to append to the query and reward files')
-parser.add_argument('--folder', type=int, required=True, choices=[0,1,2, 3],
-                    help='if this is used to justify APES on TAC')
+parser.add_argument('--train_path', type=str, required=True,
+                    help='required path to rc train')
+parser.add_argument('--dev_path', type=str, required=True,
+                    help='required path to rc train')
+parser.add_argument('--queries_folder', type=str, required=True,
+                    help='Where to read and write queries.pkl and rewards.txt')
+parser.add_argument('--glove_path', type=str, required=True,
+                    help='path to embeddings as required in the original paper. APES uses the 100 dim vectors.')
+parser.add_argument('--trained_model_path', type=str, default='./model.pkl.gz',
+                    help='Path to trained model')
 
 args = parser.parse_args()
-print 'run_id: '+str(args.run_id)
 
-if args.folder == 0:
-    query_path = '/matan_files/OpenNMT-py/queries'+str(args.run_id)+'.pkl'
-    rewards_path = '/matan_files/OpenNMT-py/rewards'+str(args.run_id)+'.txt'
-elif args.folder == 1:
-    query_path = '/matan_files/justifying_APES_on_TAC2011/queries'+str(args.run_id)+'.pkl'
-    rewards_path = '/matan_files/justifying_APES_on_TAC2011/rewards'+str(args.run_id)+'.txt'
-elif args.folder == 2:
-    query_path = '/matan_files/OpenNMT-py-EMNLP/testout/grid_search_over_alpha_beta_gamma/apes_scores/queries'+str(args.run_id)+'.pkl'
-    rewards_path = '/matan_files/OpenNMT-py-EMNLP/testout/grid_search_over_alpha_beta_gamma/apes_scores/rewards'+str(args.run_id)+'.txt'
-else:
-    query_path = '/matan_files/OpenNMT-py-EMNLP/my_scripts/queries'+str(args.run_id)+'.pkl'
-    rewards_path = '/matan_files/OpenNMT-py-EMNLP/my_scripts/rewards'+str(args.run_id)+'.txt'
+query_path = args.queries_folder + '/queries.pkl'
+rewards_path = args.queries_folder + '/rewards.txt'
 
 print 'query_path: ' + query_path
 print 'rewards_path: ' + rewards_path
 
-model_path = '/matan_files/rc-cnn-dailymail/code/model.pkl.gz'
-args, word_dict, entity_dict, train_fn, test_fn, params = qa_model.qa_model(train_file='/matan_files/datasets/cnn/cnn_qa/train.txt', dev_file='/matan_files/datasets/cnn/cnn_qa/test.txt', embedding_file='/matan_files/word-embeddings/glove.6B.100d.txt', test_only=True, prepare_model=True, pre_trained=model_path)
-
-#model_path = '/matan_files/manning_trained_models/daily-mail-model.pkl.gz'
-#args, word_dict, entity_dict, train_fn, test_fn, params = qa_model.qa_model(train_file='/matan_files/datasets/dailymail/dailymail_qa/train.txt', dev_file='/matan_files/datasets/dailymail/dailymail_qa/test.txt', embedding_file='/matan_files/word-embeddings/glove.6B.100d.txt', test_only=True, prepare_model=True, pre_trained=model_path)
+args, word_dict, entity_dict, train_fn, test_fn, params = qa_model.qa_model(train_file=args.train_path,
+                                                                            dev_file=args.dev_path,
+                                                                            embedding_file=args.glove_path,
+                                                                            test_only=True,
+                                                                            prepare_model=True,
+                                                                            pre_trained=args.trained_model_path)
 
 
 def eval_acc(data):
@@ -58,7 +54,7 @@ while(True):
         sleep(0.2)
     try:
         data = read_pickle(query_path)
-        reward = eval_acc(data[:-1]) #I don't use the cands
+        reward = eval_acc(data[:-1])
         os.remove(query_path)
         rewards_file = open(rewards_path, 'w')
         rewards_file.write(str(reward))
