@@ -1,5 +1,3 @@
-print "running python2 qa_model. don't forget to THEANO_FLAGS=device='cuda1' first"
-
 import qa_model
 import utils
 import os
