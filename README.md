@@ -1,3 +1,10 @@
+# Changes
+These are the changes made to the original repo.
+I think some of the code also comes from [this fork](https://github.com/theblackcat102/rc-cnn-dailymail).
+
+- Changed the model to load then read in a file, answer the questions, and exit
+- Returns the number of correct questions
+
 # CNN/Daily Mail Reading Comprehension Task
 
 This is a fork of https://github.com/danqi/rc-cnn-dailymail. code for [A Thorough Examination of the CNN/Daily Mail Reading Comprehension Task](https://arxiv.org/pdf/1606.02858v2.pdf).
